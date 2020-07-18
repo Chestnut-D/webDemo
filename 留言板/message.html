@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生JS 实现留言板功能</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            width: 1000px;
+            max-height: 100vh;
+            background: lightgray;
+            margin: 0 auto;
+        }
+        .container .content {
+            padding: 20px 20px 0 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .container .message {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            height: 200px;
+            align-items: flex-end;
+        }
+        .container .enterMsg {
+            width: 76%;
+            height: 180px;
+            font-size: 18px;
+            padding: 10px 2%;
+            line-height: 26px;
+        }
+        .container .sendMsg {
+            width: 15%;
+            height: 60px;
+            line-height: 60px;
+            display: inline-block;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            background: lightcoral;
+            border-radius: 6px;
+        }
+        .container .msgs {
+            margin-top: 20px;
+            height: calc(100vh - 270px);
+            background: lightyellow;
+            overflow: auto;
+            border-radius: 6px;
+            padding: 10px 2%;
+        }
+        .container .msgs h3 {
+            margin-bottom: 25px;
+        }
+        .container .msgList {
+            max-height: calc(100vh - 380px);
+            overflow: auto;
+        }
+        .container .singleMsg {
+            border-bottom: thin solid #ccc;
+            padding: 15px 0 15px 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .container .singleMsg .delete {
+            color: #999;
+            cursor: pointer;
+        }
+        .container .singleMsg .delete:hover {
+            text-decoration: underline;
+        }
+        .container .total {
+            text-align: right;
+            height: 60px;
+            line-height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="content">
+        <div class="message">
+            <textarea name="msg" id="enterMsg" class="enterMsg" placeholder="请开始你的表演吧......"></textarea>
+            <span id="sendMsg" class="sendMsg">留    言</span>
+        </div>
+        <div class="msgs">
+            <h3>留言区</h3>
+            <div class="msgList" id="messageList">
+                <div class="singleMsg">
+                    <p>一个人静静坐在电脑前写代码，有种武林高手闭关修炼的感觉！</p>
+                    <p class="delete">删除</p>
+                </div>
+            </div>
+            <div class="total">总共有 <span id="votes">1</span>条留言</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //设置页面高度，保持一屏显示
+    var maxH = document.documentElement.clientHeight;
+    var container = document.querySelector('.container');
+    container.style.height = maxH + 'px';
+
+    //留言
+    var enterMsg = document.getElementById('enterMsg');
+    var sendMsg = document.getElementById('sendMsg');
+    var msgList = document.getElementById('messageList');
+    var votes = 0; //统计留言条数
+
+    sendMsg.onclick = function(e){
+        var msg = enterMsg.value;
+        if(msg === ''){
+            alert('您还没有输入内容哦！');
+            return;
+        }
+        new createDiv(msg, msgList);
+        votes ++;
+        enterMsg.value = '';
+        //msg = ''; //把enterMsg的value值保存下来后，msg只是一个副本，与enterMsg没有关系
+        document.getElementById('votes').innerHTML = votes;
+    };
+
+    function createDiv(obj, el){
+        this.div = document.createElement('div');
+        this.div.className = 'singleMsg';
+        this.p1 = document.createElement('p');
+        this.p1.innerHTML = obj;
+        this.p2 = document.createElement('p');
+        this.p2.className = 'delete';
+        this.p2.innerHTML = '删除';
+        this.div.appendChild(this.p1);
+        this.div.appendChild(this.p2);
+        el.insertBefore(this.div, el.childNodes[0]);
+
+        var that = this;
+        this.p2.onclick = function(){
+            that.div.remove();
+            if(votes <= 0){
+                votes = 0;
+            }
+            votes --;
+            document.getElementById('votes').innerHTML = votes;
+        };
+    }
+</script>
+
+</body>
+</html>

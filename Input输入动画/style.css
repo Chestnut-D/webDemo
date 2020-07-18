@@ -1,0 +1,60 @@
+body {
+    background-image: linear-gradient(to right, orange 0%, rgb(235, 103, 103) 100%);
+    font-family: font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+
+.login {
+    position: relative;
+    width: 500px;
+    height: 200px;
+    background-image: linear-gradient(45deg, rgb(245, 183, 68) 0%, rgb(201, 180, 134) 99%, white 100%);
+    border-radius: 10px;
+    margin: 200px auto;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0,0.1);
+}
+
+.user {
+    width: 300px;
+    height: 30px;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    border-bottom: 3px solid white;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-left: 100px;
+    color: rgb(104, 92, 92);
+    font-weight: 100;
+}
+
+.text {
+    position: absolute;
+    top: 60px;
+    left: 100px;
+    transition: all .5s;
+    font-size: 20px;
+    color: #ff0000;
+    font-weight: 100;
+}
+
+.underline {
+    position: absolute;
+    top: 92px;
+    left: 100px;
+    display: block;
+    width: 305px;
+    height: 3px;
+    transform: scaleX(0);
+    transition: all .3s ease-in;
+}
+
+.user:focus~.text,
+.user:valid~.text {
+    top: 45px;
+    font-size: 14px;
+}
+
+.user:focus~.underline{
+    transform: scaleX(1);
+    background-image: linear-gradient(to right, rgb(212, 189, 138) 0%, rgb(255, 135, 23) 100%);
+}
