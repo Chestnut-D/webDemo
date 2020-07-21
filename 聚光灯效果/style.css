@@ -30,7 +30,7 @@ h1::after {
     left: 0;
     clip-path: ellipse(100px 100px at 0% 50%);
     -webkit-clip-path: ellipse(100px 100px at 0% 50%);
-    animation: SpotLight1 5s infinite;
+    animation: SpotLight1 7s infinite;
     -webkit-background-clip: text;
     background-image: linear-gradient(to right, #eea2a2, #7ac5d8);
 }
@@ -43,12 +43,12 @@ h1::before {
     right: -48px;
     clip-path: ellipse(100px 100px at 0% 50%);
     -webkit-clip-path: ellipse(100px 100px at 0% 50%);
-    animation: SpotLight2 5s infinite;
+    animation: SpotLight2 7s infinite;
     -webkit-background-clip: text;
     background-image: linear-gradient(to top right, #8ec5fc, #b12a5b);
 }
 
-/* yellow */
+/* left */
 @keyframes SpotLight1 {
 
     /* 最左 */
@@ -70,24 +70,24 @@ h1::before {
     }
 }
 
-/* pink */
+/* right */
 @keyframes SpotLight2 {
 
-    /* 最左 */
+    /* 最右 */
     0% {
-        clip-path: ellipse(100px 100px at 0% 50%);
+        clip-path: ellipse(100px 100px at 100% 50%);
         -webkit-clip-path: ellipse(100px 100px at 100% 50%);
     }
 
-    /* 移到最右 */
+    /* 移到最左 */
     50% {
         clip-path: ellipse(100px 100px at 0% 50%);
         -webkit-clip-path: ellipse(100px 100px at 0% 50%);
     }
 
-    /* 回到最左 */
+    /* 回到最右边 */
     100% {
-        clip-path: ellipse(100px 100px at 0% 50%);
+        clip-path: ellipse(100px 100px at 100% 50%);
         -webkit-clip-path: ellipse(100px 100px at 100% 50%);
     }
 }
