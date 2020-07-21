@@ -21,9 +21,9 @@ class Lb {
     this.status = true;
 
     // 轮播速度
-    this.speed = options.speed || 600;
+    this.speed = options.speed;
     // 等待延时
-    this.delay = options.delay || 3000;
+    this.delay = options.delay;
 
     // 轮播方向
     this.direction = options.direction || 'left';
