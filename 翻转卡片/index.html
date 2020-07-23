@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻转卡片</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1963594_9ix1hoqp5ee.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="front">
+            <span class="turn">
+                <i class="iconfont icon-change"></i>
+            </span>
+            <h2>There is fronted lab</h2>
+            <h4>we focus on</h4>
+            <div class="links">
+                <a href="#"><i class="iconfont icon-html"></i></a>
+                <a href="#"><i class="iconfont icon-js"></i></a>
+                <a href="#"><i class="iconfont icon-css"></i></a>
+                <a href="#"><i class="iconfont icon-Vue"></i></a>
+                <a href="#"><i class="iconfont icon-react"></i></a>
+                <a href="#"><i class="iconfont icon-Angular"></i></a>
+            </div>
+        </div>
+
+        <div class="back">
+            <span class="turn">
+                <i class="iconfont icon-change"></i>
+            </span>
+            <h2>Contact us</h2>
+            <h4>through the following ways</h4>
+            <div class="links">
+                <a href="#"><i class="iconfont icon-emailFilled"></i></a>
+                <a href="#"><i class="iconfont icon-gongzhonghao"></i></a>
+                <a href="#"><i class="iconfont icon-qq"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script>
+    $($(".turn i").click(
+        () => {
+            $(".back").toggleClass("back-turn");
+            $(".front").toggleClass("front-turn");
+        }
+    ))
+</script>
+
+</html>
