@@ -1,32 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>轮播图</title>
 	<link rel="stylesheet" href="demo.css">
 </head>
+
 <body>
-	<div class="wrapper">
-		<div class="box">
-			<ul class = 'imgbox'>
-				<li class = "imgshow"><img src="img/1.jpg" alt=""></li>
-				<li class = "imgshow"><img src="img/2.jpg" alt=""></li>
-				<li class = "imgshow"><img src="img/3.jpg" alt=""></li>
-				<li class = "imgshow"><img src="img/4.jpg" alt=""></li>
-			</ul>
-		</div>
-		<div class="next"></div>
-		<div class="last"></div>
-		<div class="dot">
-			<ul>
-				<li class = 'act'><a href="#"></a></li>
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-			</ul>
-		</div>
+	<div class="wrap">
+		<ul class='list'>
+			<li class="item active"></li>
+			<li class="item"></li>
+			<li class="item"></li>
+			<li class="item"></li>
+			<li class="item"></li>
+		</ul>
+		<div id="goPre" class="btn"></div>
+		<div id="goNext" class="btn"></div>
+		<ul class="pointlist">
+			<li class='point active' data-index="0"></li>
+			<li class='point' data-index="1"></li>
+			<li class='point' data-index="2"></li>
+			<li class='point' data-index="3"></li>
+			<li class='point' data-index="4"></li>
+		</ul>
 	</div>
 </body>
 
-<script src="demo.js"></script>
+<script type="text/javascript">
+	var items = document.getElementsByClassName("item");
+	var points = document.getElementsByClassName("point");
+	var goPreBtn = document.getElementById("goPre");
+	var goNextBtn = document.getElementById("goNext");
+	var index = 0; //表示第几张图片在展示
+	var time = 0; //定时器图片自动播放
+	var claerActive = function () {
+		for (var i = 0; i < items.length; i++) {
+			items[i].className = 'item';
+		}
+		for (var i = 0; i < items.length; i++) {
+			points[i].className = 'point';
+		}
+	}
+	var goIndex = function () {
+		claerActive();
+		items[index].className = 'item active';
+		points[index].className = 'point active';
+	}
+	var goPre = function () {
+		if (index == 0) {
+			index = 4;
+		} else {
+			index--;
+		}
+		goIndex();
+	}
+
+	var goNext = function () {
+		if (index < 4) {
+			index++;
+		} else {
+			index = 0;
+		}
+		goIndex();
+	}
+
+	goNextBtn.addEventListener("click", function () {
+		goNext();
+		time = 0; //点击后计时器改为0
+	});
+	goPreBtn.addEventListener("click", function () {
+		goPre();
+		time = 0; //点击后计时器改为0
+	});
+
+	for (var i = 0; i < points.length; i++) {
+		points[i].addEventListener('click', function () {
+			var pointIndex = this.getAttribute('data-index');
+			index = pointIndex;
+			goIndex();
+			time = 0; //点击后计时器改为0
+		})
+	}
+
+	//2000ms跳转一次
+
+	setInterval(function () {
+		time++;
+		if (time == 20) {
+			goNext();
+			time = 0;
+		}
+	}, 120)
+
+	//setInterval语法，毫秒单位
+	// setInterval(() => {
+	// 	time++;
+	// 	if (time == 20) {
+	// 		goNext();
+	// 		time = 0;
+	// 	}
+	// }, interval);
+</script>
+
 </html>

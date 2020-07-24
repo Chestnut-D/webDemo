@@ -1,93 +1,132 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-body{
-	background-color: #ccc;
+body {
+	background-color: #fff;
 }
-.wrapper{
+
+.wrap {
 	width: 720px;
-	height: 412px;
+	height: 410px;
 	margin: 100px auto;
-	overflow: hidden;
 	position: relative;
 }
-.wrapper .box{
-	width: 400%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	transition: left 1s;
-}
-.box ul li{
-	float: left;
-} 
 
-.box img{
+.wrap .list {
+	position: relative;
 	width: 720px;
 	height: 410px;
 }
-.wrapper .next{
-	width: 0px;
-	height: 0px;
+
+.list .item {
 	position: absolute;
-	z-index: 99;
-	right: -17px;
-	top: 185px;
-	border: 30px solid rgba(200,200,200,0.4);
-	border-right-color:transparent;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	opacity: 0;
+	transition: all .5s;
+}
+
+.item:nth-child(1) {
+	background-image: url(img/1.jpg);
+}
+
+.item:nth-child(2) {
+	background-image: url(img/2.jpg);
+}
+
+.item:nth-child(3) {
+	background-image: url(img/3.jpg);
+}
+
+.item:nth-child(4) {
+	background-image: url(img/4.jpg);
+}
+
+.item:nth-child(5) {
+	background-image: url(img/5.png);
+}
+
+.btn {
+	position: absolute;
+	top: 170px;
+}
+
+.btn:focus {
+	outline: 0;
+}
+
+.item.active {
+	opacity: 1;
+	z-index: 1;
+}
+
+#goPre {
+	left: -10px;
+	position: absolute;
+	z-index: 10;
+	border: 30px solid rgba(168, 161, 161, 0.2);
+	border-left-color: transparent;
 	border-top-color: transparent;
 	border-bottom-color: transparent;
 }
-.wrapper .next:hover{
-	border: 30px solid rgba(200,200,200,0.9);
-	border-right-color:transparent;
+
+#goPre:hover {
+	border: 30px solid rgba(255, 255, 255, 0.4);
+	border-left-color: transparent;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	cursor: pointer;
+
+}
+
+#goNext {
+	right: -10px;
+	position: absolute;
+	z-index: 10;
+	border: 30px solid rgba(168, 161, 161, 0.2);
+	border-right-color: transparent;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+}
+
+#goNext:hover {
+	border: 30px solid rgba(255, 255, 255, 0.4);
+	border-right-color: transparent;
 	border-top-color: transparent;
 	border-bottom-color: transparent;
 	cursor: pointer;
 }
-.wrapper .last{
-	width: 0px;
-	height: 0px;
-	position: absolute;
-	z-index: 99;
-	left: -17px;
-	top: 185px;
-	border: 30px solid rgba(200,200,200,0.4);
-	border-left-color:transparent;
-	border-top-color: transparent;
-	border-bottom-color: transparent;
-}
-.wrapper .last:hover{
-	border: 30px solid rgba(200,200,200,0.9);
-	border-left-color:transparent;
-	border-top-color: transparent;
-	border-bottom-color: transparent;
-	cursor: pointer;
-}
-.wrapper .dot{
-	width: 400px;
+
+
+.wrap .pointlist {
+	width: 200px;
 	height: 30px;
-	position: absolute;
-	top: 330px;
-	left: 295px;
 	line-height: 30px;
+	position: absolute;
+	top: 370px;
+	left: 295px;
+	z-index: 10;
 }
-.wrapper .dot li{
-	width: 15px;
-	height: 15px;
-	background-color:rgba(200,200,200,0.4);
+
+.pointlist .point {
+	width: 8px;
+	height: 8px;
+	background-color: rgb(122, 120, 120);
 	border: 2px solid #eee;
 	border-radius: 50%;
 	float: left;
-	margin-right: 20px;	
+	margin-right: 20px;
 	cursor: pointer;
 }
-.wrapper .dot li:hover{
-	background-color:rgba(200,200,200,1);
+
+.pointlist .point:hover {
+	background-color: white;
 }
-.wrapper .dot .act{
-	background-color:rgba(200,200,200,0.8);
+
+.point.active {
+	background-color: white;
 }
